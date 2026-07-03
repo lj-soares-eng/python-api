@@ -212,6 +212,30 @@ python manage.py migrate
 python manage.py runserver 8080
 ```
 
+## Testing
+
+Tests use **pytest** with an in-memory SQLite database (`core/settings_test.py`) — no MySQL or Docker required.
+
+```bash
+source venv/bin/activate
+pip install -r requirements.txt
+pytest
+```
+
+With coverage:
+
+```bash
+pytest --cov=users --cov-report=term-missing
+```
+
+Test suites:
+
+| File | Covers |
+|------|--------|
+| `users/tests/test_services.py` | Business logic, password hashing, duplicate email |
+| `users/tests/test_serializers.py` | Input validation, response shape |
+| `users/tests/test_api.py` | Full CRUD HTTP endpoints |
+
 ## Project Structure
 
 ```text
@@ -225,7 +249,8 @@ python-api/
 │   ├── services.py              # Business logic, password hashing
 │   ├── views.py                 # REST controllers (ViewSet)
 │   ├── urls.py
-│   └── migrations/
+│   ├── migrations/
+│   └── tests/
 ├── specs/001-users-api-docker/  # Spec Kit feature artifacts
 ├── Dockerfile
 ├── docker-compose.yml

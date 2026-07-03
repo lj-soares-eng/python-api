@@ -8,3 +8,6 @@ db.sqlite3
 .specify/
 .cursor/
 specs/
+.pytest_cache/
+.coverage
+htmlcov/
