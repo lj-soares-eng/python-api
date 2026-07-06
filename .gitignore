@@ -5,3 +5,9 @@ db.sqlite3
 .env
 .idea/
 .vscode/
+.specify/
+.cursor/
+specs/
+.pytest_cache/
+.coverage
+htmlcov/
